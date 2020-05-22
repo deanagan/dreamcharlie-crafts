@@ -6,7 +6,7 @@ console.log("\x1b[35m***BUILD***\x1b[0m");
 console.log("Cleaning...");
 fsExtra.emptyDirSync("dist");
 
-console.log("Building...");
+console.log("Building files with command node node_modules/typescript/bin/tsc...");
 try {
     cp.execSync("node node_modules/typescript/bin/tsc", {
         stdio: "inherit"
@@ -18,7 +18,7 @@ try {
     return;
 }
 
-console.log("\x1b[35m***Copying www...***\x1b[0m")
+console.log("\x1b[35m***Copying contents of www into dist***\x1b[0m")
 fsExtra.copy("./www", "./dist", function (err) {
     if (err) {
         console.error(err);
