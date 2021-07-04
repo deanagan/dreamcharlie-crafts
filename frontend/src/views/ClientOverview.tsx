@@ -24,11 +24,6 @@ export const ClientOverview = () => {
           <td>Thornton</td>
           <td>@fat</td>
         </tr>
-        <tr>
-          <td>3</td>
-          <td colSpan="2">Larry the Bird</td>
-          <td>@twitter</td>
-        </tr>
       </tbody>
     </Table>
   );
