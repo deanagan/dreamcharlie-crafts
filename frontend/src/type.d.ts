@@ -9,9 +9,9 @@ type EntryState = {
     entries: IEntry[];
 }
 
-  type EntryAction = {
+type EntryAction = {
     type: string;
     entry: IEntry;
-  }
+}
 
-  type DispatchType = (args: EntryAction) => EntryAction;
+type DispatchType = (args: EntryAction) => EntryAction;
