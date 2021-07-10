@@ -1,7 +1,13 @@
 import Table from "react-bootstrap/Table";
 import { Repair } from "../state/types";
 
-export const RepairOverview: React.FC<Repair[]> = (data) => {
+
+interface Props {
+  repairs: Repair[];
+}
+
+
+export const RepairOverview: React.FC<Props> = ({repairs}) => {
 
   return (
     <Table striped hover bordered variant="light">
@@ -15,12 +21,12 @@ export const RepairOverview: React.FC<Repair[]> = (data) => {
       </thead>
       <tbody>
         {
-         Object.entries(data).map(value =>
+         repairs.map(repair =>
           <tr>
-            <td>{value[1].guid}</td>
-            <td>{value[1].name}</td>
-            <td>{value[1].detail}</td>
-            <td>{value[1].fixed ? "True" : "False"}</td>
+            <td>{repair.guid}</td>
+            <td>{repair.name}</td>
+            <td>{repair.detail}</td>
+            <td>{repair.fixed ? "True" : "False"}</td>
           </tr>
         )}
       </tbody>

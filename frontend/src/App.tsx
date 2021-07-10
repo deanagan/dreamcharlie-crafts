@@ -15,7 +15,8 @@ const App: React.FC = () => {
   const state = useSelector((state: State) => state.repair);
 
 
-  const {data} = state;
+  const { repairs } = state;
+
   useEffect(() => {
       dispatch(getRepairEntries())
   }, [dispatch])
@@ -24,7 +25,7 @@ const App: React.FC = () => {
     <div className="App">
       <NavBar />
       <div>
-        <RepairOverview {...data}/>
+        <RepairOverview repairs={repairs}/>
       </div>
       <div>
         <button onClick={() => addRepair({id: 1, guid: "abcde-fghij-klmno", name: "Car Handle", detail: "handle got chipped", fixed: false})}>Add</button>

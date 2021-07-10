@@ -9,6 +9,6 @@ export interface Repair {
 
 export interface RepairState {
     readonly loading: boolean;
-    readonly data: Repair[];
+    readonly repairs: Repair[];
     readonly errors?: string;
 }
