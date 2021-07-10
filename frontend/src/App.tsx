@@ -24,7 +24,7 @@ const App: React.FC = () => {
     <div className="App">
       <NavBar />
       <div>
-        <RepairOverview />
+        <RepairOverview {...data}/>
       </div>
       <div>
       <h1>Repairs {JSON.stringify(data)}</h1>

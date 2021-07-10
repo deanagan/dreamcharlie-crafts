@@ -1,9 +1,11 @@
 import Table from "react-bootstrap/Table";
+import { Repair } from "../state/types";
 
-export const RepairOverview = () => {
+export const RepairOverview: React.FC<Repair[]> = (data) => {
 
   return (
     <Table striped hover bordered variant="light">
+      <div>{JSON.stringify(data)}</div>
       <thead>
         <tr>
           <th>#</th>

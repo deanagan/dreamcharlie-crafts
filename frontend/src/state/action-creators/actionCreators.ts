@@ -34,22 +34,3 @@ export const getRepairEntries = () => {
     });
   };
 };
-
-// export const getRepairEntries = () => async (dispatch : Dispatch<RepairAction> ) => {
-
-//     try{
-//         const res = await axios.get(`http://localhost:1337/repairs`)
-//         dispatch( {
-//             type: RepairActionTypes.SET_REPAIR_ENTRIES,
-//             payload: res.data
-//         })
-//     }
-//     catch(error){
-//         // dispatch( {
-//         //     type: GET_REPAIRS_ERROR,
-//         //     payload: error,
-//         // })
-//         console.log(error);
-//     }
-
-// }
