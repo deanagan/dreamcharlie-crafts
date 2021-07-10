@@ -1,6 +1,7 @@
 import Table from "react-bootstrap/Table";
 
 export const ClientOverview = () => {
+
   return (
     <Table striped hover bordered variant="light">
       <thead>

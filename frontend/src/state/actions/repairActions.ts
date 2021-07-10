@@ -1,5 +1,7 @@
-import { RepairActionTypes } from "../action-types/repairActionTypes";
-import { Repair } from "../types";
+
+import { RepairActionTypes } from '../action-types/repairActionTypes';
+import { Repair } from '../types';
+
 
 interface AddRepairAction {
     type: RepairActionTypes.ADD_REPAIR_ENTRY;
@@ -12,4 +14,9 @@ interface UpdateRepairAction {
     fixed: boolean;
 }
 
-export type Action = AddRepairAction | UpdateRepairAction;
+interface GetRepairEntriesAction {
+    type: RepairActionTypes.GET_REPAIR_ENTRIES;
+    payload: Repair[];
+}
+
+export type Action = AddRepairAction | UpdateRepairAction | GetRepairEntriesAction;

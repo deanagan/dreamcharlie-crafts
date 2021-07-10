@@ -1,4 +1,4 @@
-import { Action } from "../actions/repairActions";
+import { Action } from "../action-types/repairActionTypes";
 import { RepairActionTypes } from "../action-types/repairActionTypes";
 import { RepairState } from "../types";
 
@@ -21,6 +21,11 @@ const reducer = (state: RepairState = initialState, action: Action) => {
                 data: state.data.map(e => e.guid === action.guid ?
                     { ...e, fixed: action.fixed } : e
                 )
+            }
+        case RepairActionTypes.SET_REPAIR_ENTRIES:
+            return {
+                ...state,
+                data: action.payload
             }
         //TODO: update summary, etc
         default:
