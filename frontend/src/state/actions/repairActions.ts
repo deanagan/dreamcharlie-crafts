@@ -5,7 +5,7 @@ import { Repair } from '../types';
 
 interface AddRepairAction {
     type: RepairActionTypes.ADD_REPAIR_ENTRY;
-    payload: Repair;
+    repair: Repair;
 }
 
 interface UpdateRepairAction {
@@ -16,7 +16,7 @@ interface UpdateRepairAction {
 
 interface GetRepairEntriesAction {
     type: RepairActionTypes.GET_REPAIR_ENTRIES;
-    payload: Repair[];
+    repairs: Repair[];
 }
 
 

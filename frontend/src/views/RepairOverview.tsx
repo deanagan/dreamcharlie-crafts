@@ -5,28 +5,25 @@ export const RepairOverview: React.FC<Repair[]> = (data) => {
 
   return (
     <Table striped hover bordered variant="light">
-      <div>{JSON.stringify(data)}</div>
+      <div>{typeof(data.map)}</div>
       <thead>
         <tr>
-          <th>#</th>
-          <th>First Name</th>
-          <th>Last Name</th>
-          <th>Username</th>
+          <th>Guid</th>
+          <th>Name</th>
+          <th>Detail</th>
+          <th>Fixed</th>
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>1</td>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>@mdo</td>
-        </tr>
-        <tr>
-          <td>2</td>
-          <td>Jacob</td>
-          <td>Thornton</td>
-          <td>@fat</td>
-        </tr>
+        {
+         Object.entries(data).map(value =>
+          <tr>
+            <td>{value[1].guid}</td>
+            <td>{value[1].name}</td>
+            <td>{value[1].detail}</td>
+            <td>{value[1].fixed ? "True" : "False"}</td>
+          </tr>
+        )}
       </tbody>
     </Table>
   );

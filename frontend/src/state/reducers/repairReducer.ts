@@ -13,7 +13,7 @@ const reducer = (state: RepairState = initialState, action: RepairAction) => {
         case RepairActionTypes.ADD_REPAIR_ENTRY:
             return {
                 ...state,
-                data: [...state.data, action.payload]
+                data: [...state.data, action.repair]
             }
         case RepairActionTypes.UPDATE_REPAIR_STATE:
             return {
@@ -25,7 +25,7 @@ const reducer = (state: RepairState = initialState, action: RepairAction) => {
         case RepairActionTypes.GET_REPAIR_ENTRIES:
             return {
                 ...state,
-                data: action.payload
+                data: action.repairs
             }
         //TODO: update summary, etc
         default:

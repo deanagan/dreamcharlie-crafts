@@ -9,7 +9,7 @@ export const addRepair = (repair: Repair) => {
   return (dispatch: Dispatch<RepairAction>) => {
     dispatch({
       type: RepairActionTypes.ADD_REPAIR_ENTRY,
-      payload: repair,
+      repair: repair,
     });
   };
 };
@@ -26,10 +26,16 @@ export const updateRepairState = (guid: string, fixed: boolean) => {
 
 export const getRepairEntries = () => {
   return (dispatch: Dispatch<RepairAction>) => {
-    axios.get(`http://localhost:1337/repairs`).then((res) => {
+    axios.get(`http://localhost:1337/repairs`).then(({data}) => {
       dispatch({
         type: RepairActionTypes.GET_REPAIR_ENTRIES,
-        payload: res.data,
+        repairs: data.map((repair: Repair) => {
+            return { id: repair.id,
+            guid: repair.guid,
+            name: repair.name,
+            detail: repair.detail,
+            fixed: repair.fixed}
+        }),
       });
     });
   };

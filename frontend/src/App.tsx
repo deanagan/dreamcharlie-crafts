@@ -27,7 +27,6 @@ const App: React.FC = () => {
         <RepairOverview {...data}/>
       </div>
       <div>
-      <h1>Repairs {JSON.stringify(data)}</h1>
         <button onClick={() => addRepair({id: 1, guid: "abcde-fghij-klmno", name: "Car Handle", detail: "handle got chipped", fixed: false})}>Add</button>
         <button onClick={() => updateRepairState("abcde-fghij-klmno", true)}>Update</button>
       </div>
