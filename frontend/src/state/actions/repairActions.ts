@@ -19,4 +19,5 @@ interface GetRepairEntriesAction {
     payload: Repair[];
 }
 
-export type Action = AddRepairAction | UpdateRepairAction | GetRepairEntriesAction;
+
+export type RepairAction = AddRepairAction | UpdateRepairAction | GetRepairEntriesAction;

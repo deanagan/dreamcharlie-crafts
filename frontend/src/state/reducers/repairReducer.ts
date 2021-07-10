@@ -1,5 +1,5 @@
-import { Action } from "../action-types/repairActionTypes";
 import { RepairActionTypes } from "../action-types/repairActionTypes";
+import { RepairAction } from "../actions/repairActions";
 import { RepairState } from "../types";
 
 const initialState: RepairState = {
@@ -8,7 +8,7 @@ const initialState: RepairState = {
     loading: false
   }
 
-const reducer = (state: RepairState = initialState, action: Action) => {
+const reducer = (state: RepairState = initialState, action: RepairAction) => {
     switch (action.type) {
         case RepairActionTypes.ADD_REPAIR_ENTRY:
             return {
@@ -22,7 +22,7 @@ const reducer = (state: RepairState = initialState, action: Action) => {
                     { ...e, fixed: action.fixed } : e
                 )
             }
-        case RepairActionTypes.SET_REPAIR_ENTRIES:
+        case RepairActionTypes.GET_REPAIR_ENTRIES:
             return {
                 ...state,
                 data: action.payload
