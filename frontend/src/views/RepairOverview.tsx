@@ -5,7 +5,6 @@ export const RepairOverview: React.FC<Repair[]> = (data) => {
 
   return (
     <Table striped hover bordered variant="light">
-      <div>{typeof(data.map)}</div>
       <thead>
         <tr>
           <th>Guid</th>
