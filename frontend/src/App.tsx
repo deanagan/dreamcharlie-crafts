@@ -1,6 +1,6 @@
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { ClientOverview } from "./views/ClientOverview";
+import { RepairOverview } from "./views/RepairOverview";
 import { NavBar } from "./views/NavBar";
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
@@ -24,7 +24,7 @@ const App: React.FC = () => {
     <div className="App">
       <NavBar />
       <div>
-        <ClientOverview />
+        <RepairOverview />
       </div>
       <div>
       <h1>Repairs {JSON.stringify(data)}</h1>

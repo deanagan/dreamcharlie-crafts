@@ -1,6 +1,6 @@
 import Table from "react-bootstrap/Table";
 
-export const ClientOverview = () => {
+export const RepairOverview = () => {
 
   return (
     <Table striped hover bordered variant="light">
