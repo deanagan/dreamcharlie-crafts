@@ -12,9 +12,6 @@ const App: React.FC = () => {
   const { addRepair, updateRepairState } = bindActionCreators(actionCreators, dispatch);
   const state = useSelector((state: State) => state.repair);
 
-
-  //const { repairs } = state;
-
   useEffect(() => {
       dispatch(actionCreators.getRepairEntries())
   }, [dispatch])
