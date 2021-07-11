@@ -1,7 +1,6 @@
 
 export interface Repair {
-    id: number;
-    guid: string;
+    id?: number;
     name: string;
     detail: string;
     fixed: boolean;

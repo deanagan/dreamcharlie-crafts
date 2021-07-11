@@ -18,7 +18,7 @@ const reducer = (state: RepairState = initialState, action: RepairAction) => {
         case RepairActionTypes.UPDATE_REPAIR_STATE:
             return {
                 ...state,
-                repairs: state.repairs.map(e => e.guid === action.guid ?
+                repairs: state.repairs.map(e => e.id === action.id ?
                     { ...e, fixed: action.fixed } : e
                 )
             }

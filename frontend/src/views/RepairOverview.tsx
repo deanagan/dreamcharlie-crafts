@@ -8,7 +8,6 @@ export const RepairOverview: React.FC<RepairState> = ({repairs}) => {
     <Table striped hover bordered variant="light">
       <thead>
         <tr>
-          <th>Guid</th>
           <th>Name</th>
           <th>Detail</th>
           <th>Fixed</th>
@@ -17,8 +16,7 @@ export const RepairOverview: React.FC<RepairState> = ({repairs}) => {
       <tbody>
         {
          repairs.map(repair =>
-          <tr>
-            <td>{repair.guid}</td>
+          <tr key={repair.id}>
             <td>{repair.name}</td>
             <td>{repair.detail}</td>
             <td>{repair.fixed ? "True" : "False"}</td>

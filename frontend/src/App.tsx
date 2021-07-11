@@ -23,7 +23,7 @@ const App: React.FC = () => {
         <RepairOverview {...state}/>
       </div>
       <div>
-        <button onClick={() => addRepair({id: 1, guid: "abcde-fghij-klmno", name: "Car Handle", detail: "handle got chipped", fixed: false})}>Add</button>
+        <button onClick={() => addRepair({name: "Car Handle", detail: "handle got chipped", fixed: false})}>Add</button>
         <button onClick={() => updateRepairState("abcde-fghij-klmno", true)}>Update</button>
       </div>
     </div>

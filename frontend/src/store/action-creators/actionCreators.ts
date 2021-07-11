@@ -12,6 +12,8 @@ export const addRepair = (repair: Repair) => {
         type: RepairActionTypes.ADD_REPAIR_ENTRY,
         repair: repair,
       });
+    }).catch(e => {
+      console.log(e);
     });
   };
 };

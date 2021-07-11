@@ -10,7 +10,7 @@ interface AddRepairAction {
 
 interface UpdateRepairAction {
     type: RepairActionTypes.UPDATE_REPAIR_STATE;
-    guid: string;
+    id: number;
     fixed: boolean;
 }
 
