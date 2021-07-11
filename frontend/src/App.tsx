@@ -6,8 +6,6 @@ import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { bindActionCreators } from "redux";
 import { actionCreators, State } from "./state";
-import { getRepairEntries } from "./state/action-creators/actionCreators";
-
 
 const App: React.FC = () => {
   const dispatch = useDispatch();
@@ -18,7 +16,7 @@ const App: React.FC = () => {
   const { repairs } = state;
 
   useEffect(() => {
-      dispatch(getRepairEntries())
+      dispatch(actionCreators.getRepairEntries())
   }, [dispatch])
 
   return (
