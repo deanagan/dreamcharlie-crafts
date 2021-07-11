@@ -18,11 +18,11 @@ export const addRepair = (repair: Repair) => {
   };
 };
 
-export const updateRepairState = (guid: string, fixed: boolean) => {
+export const updateRepairState = (id: number, fixed: boolean) => {
   return (dispatch: Dispatch<RepairAction>) => {
     dispatch({
       type: RepairActionTypes.UPDATE_REPAIR_STATE,
-      guid: guid,
+      id: id,
       fixed: fixed,
     });
   };
@@ -36,7 +36,6 @@ export const getRepairEntries = () => {
         repairs: data.map((repair: Repair) => {
           return {
             id: repair.id,
-            guid: repair.guid,
             name: repair.name,
             detail: repair.detail,
             fixed: repair.fixed,

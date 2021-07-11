@@ -24,7 +24,7 @@ const App: React.FC = () => {
       </div>
       <div>
         <button onClick={() => addRepair({name: "Car Handle", detail: "handle got chipped", fixed: false})}>Add</button>
-        <button onClick={() => updateRepairState("abcde-fghij-klmno", true)}>Update</button>
+        <button onClick={() => updateRepairState(1, true)}>Update</button>
       </div>
     </div>
   );
