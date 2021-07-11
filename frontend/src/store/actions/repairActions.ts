@@ -1,6 +1,6 @@
 
 import { RepairActionTypes } from '../action-types/repairActionTypes';
-import { Repair } from '../types';
+import { Repair } from '../../types';
 
 
 interface AddRepairAction {

@@ -5,7 +5,7 @@ import { NavBar } from "./views/NavBar";
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { bindActionCreators } from "redux";
-import { actionCreators, State } from "./state";
+import { actionCreators, State } from "./store";
 
 const App: React.FC = () => {
   const dispatch = useDispatch();

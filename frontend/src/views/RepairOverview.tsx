@@ -1,13 +1,8 @@
 import Table from "react-bootstrap/Table";
-import { Repair } from "../state/types";
+import { RepairState } from "../types";
 
 
-interface Props {
-  repairs: Repair[];
-}
-
-
-export const RepairOverview: React.FC<Props> = ({repairs}) => {
+export const RepairOverview: React.FC<RepairState> = ({repairs}) => {
 
   return (
     <Table striped hover bordered variant="light">

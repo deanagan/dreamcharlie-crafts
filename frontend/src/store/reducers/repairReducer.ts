@@ -1,6 +1,6 @@
 import { RepairActionTypes } from "../action-types/repairActionTypes";
 import { RepairAction } from "../actions/repairActions";
-import { RepairState } from "../types";
+import { RepairState } from "../../types";
 
 const initialState: RepairState = {
     repairs: [],

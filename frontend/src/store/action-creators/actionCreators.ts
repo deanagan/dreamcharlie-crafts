@@ -1,6 +1,6 @@
 import { RepairActionTypes } from "../action-types/repairActionTypes";
 import { Dispatch } from "redux";
-import { Repair } from "../types";
+import { Repair } from "../../types";
 import { RepairAction } from "../actions/repairActions";
 
 import axios from "axios";
