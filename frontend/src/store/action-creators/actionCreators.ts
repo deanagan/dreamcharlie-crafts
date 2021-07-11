@@ -7,9 +7,11 @@ import axios from "axios";
 
 export const addRepair = (repair: Repair) => {
   return (dispatch: Dispatch<RepairAction>) => {
-    dispatch({
-      type: RepairActionTypes.ADD_REPAIR_ENTRY,
-      repair: repair,
+    axios.post(`http://localhost:1337/repairs`, repair).then(() => {
+      dispatch({
+        type: RepairActionTypes.ADD_REPAIR_ENTRY,
+        repair: repair,
+      });
     });
   };
 };
@@ -26,15 +28,17 @@ export const updateRepairState = (guid: string, fixed: boolean) => {
 
 export const getRepairEntries = () => {
   return (dispatch: Dispatch<RepairAction>) => {
-    axios.get(`http://localhost:1337/repairs`).then(({data}) => {
+    axios.get(`http://localhost:1337/repairs`).then(({ data }) => {
       dispatch({
         type: RepairActionTypes.GET_REPAIR_ENTRIES,
         repairs: data.map((repair: Repair) => {
-            return { id: repair.id,
+          return {
+            id: repair.id,
             guid: repair.guid,
             name: repair.name,
             detail: repair.detail,
-            fixed: repair.fixed}
+            fixed: repair.fixed,
+          };
         }),
       });
     });
