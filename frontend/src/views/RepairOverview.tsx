@@ -1,5 +1,6 @@
 import Table from "react-bootstrap/Table";
 import { RepairState } from "../types";
+import { FixSwitch } from "./FixSwitch";
 
 
 export const RepairOverview: React.FC<RepairState> = ({repairs}) => {
@@ -11,6 +12,7 @@ export const RepairOverview: React.FC<RepairState> = ({repairs}) => {
           <th>Name</th>
           <th>Detail</th>
           <th>Fixed</th>
+          <th>Update</th>
         </tr>
       </thead>
       <tbody>
@@ -20,6 +22,7 @@ export const RepairOverview: React.FC<RepairState> = ({repairs}) => {
             <td>{repair.name}</td>
             <td>{repair.detail}</td>
             <td>{repair.fixed ? "True" : "False"}</td>
+            <td><FixSwitch switchId={repair.id as number} fixed={repair.fixed}/></td>
           </tr>
         )}
       </tbody>
