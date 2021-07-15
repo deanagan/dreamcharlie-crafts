@@ -7,23 +7,29 @@ import axios from "axios";
 
 export const addRepair = (repair: Repair) => {
   return (dispatch: Dispatch<RepairAction>) => {
-    axios.post(`http://localhost:1337/repairs`, repair).then(() => {
-      dispatch({
-        type: RepairActionTypes.ADD_REPAIR_ENTRY,
-        repair: repair,
+    axios
+      .post(`http://localhost:1337/repairs`, repair)
+      .then(() => {
+        dispatch({
+          type: RepairActionTypes.ADD_REPAIR_ENTRY,
+          repair: repair,
+        });
+      })
+      .catch((e) => {
+        console.log(e);
       });
-    }).catch(e => {
-      console.log(e);
-    });
   };
 };
 
 export const updateRepairState = (id: number, fixed: boolean) => {
   return (dispatch: Dispatch<RepairAction>) => {
-    dispatch({
-      type: RepairActionTypes.UPDATE_REPAIR_STATE,
-      id: id,
-      fixed: fixed,
+    axios.put(`http://localhost:1337/repairs/${id}`, {fixed: fixed})
+    .then(({ data }) => {
+      dispatch({
+        type: RepairActionTypes.UPDATE_REPAIR_STATE,
+        id: data.id,
+        fixed: data.fixed,
+      });
     });
   };
 };
