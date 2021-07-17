@@ -9,10 +9,10 @@ export const addRepair = (repair: Repair) => {
   return (dispatch: Dispatch<RepairAction>) => {
     axios
       .post(`http://localhost:1337/repairs`, repair)
-      .then(() => {
+      .then(({data}) => {
         dispatch({
           type: RepairActionTypes.ADD_REPAIR_ENTRY,
-          repair: repair,
+          repair: { ...repair, id: data.id }
         });
       })
       .catch((e) => {
