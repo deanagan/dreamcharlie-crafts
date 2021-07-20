@@ -2,7 +2,7 @@ import { RepairActionTypes } from "../action-types/repairActionTypes";
 import { Dispatch } from "redux";
 import { Repair } from "../../types";
 import { RepairAction } from "../actions/repairActions";
-import { HttpClient } from "../action-apis/repairActionApi";
+import { HttpClient } from "../action-apis/commonActionApi";
 
 export const addRepair = (repair: Repair) => {
   return (dispatch: Dispatch<RepairAction>) => {
