@@ -2,17 +2,15 @@ import { RepairActionTypes } from "../action-types/repairActionTypes";
 import { Dispatch } from "redux";
 import { Repair } from "../../types";
 import { RepairAction } from "../actions/repairActions";
-
-import axios from "axios";
+import { HttpClient } from "../action-apis/repairActionApi";
 
 export const addRepair = (repair: Repair) => {
   return (dispatch: Dispatch<RepairAction>) => {
-    axios
-      .post(`http://localhost:1337/repairs`, repair)
-      .then(({data}) => {
+    new HttpClient().post<Repair>( {url: 'http://localhost:1337/repairs', requiresToken: false, payload: repair})
+      .then((repair) => {
         dispatch({
           type: RepairActionTypes.ADD_REPAIR_ENTRY,
-          repair: { ...repair, id: data.id }
+          repair: { ...repair, id: repair.id }
         });
       })
       .catch((e) => {
@@ -22,13 +20,15 @@ export const addRepair = (repair: Repair) => {
 };
 
 export const updateRepairState = (id: number, fixed: boolean) => {
+  const fixedState = { fixed: fixed };
   return (dispatch: Dispatch<RepairAction>) => {
-    axios.put(`http://localhost:1337/repairs/${id}`, {fixed: fixed})
-    .then(({ data }) => {
+    new HttpClient().put<Repair | typeof fixedState>({url: `http://localhost:1337/repairs/${id}`, requiresToken: false, payload: fixedState} )
+    .then((data) => {
+      const repair = data as Repair;
       dispatch({
         type: RepairActionTypes.UPDATE_REPAIR_STATE,
-        id: data.id,
-        fixed: data.fixed,
+        id: repair.id as number,
+        fixed: repair.fixed,
       });
     });
   };
@@ -36,10 +36,11 @@ export const updateRepairState = (id: number, fixed: boolean) => {
 
 export const getRepairEntries = () => {
   return (dispatch: Dispatch<RepairAction>) => {
-    axios.get(`http://localhost:1337/repairs`).then(({ data }) => {
+    new HttpClient().get<Repair[]>( {url: 'http://localhost:1337/repairs', requiresToken: false})
+    .then((repairs) => {
       dispatch({
         type: RepairActionTypes.GET_REPAIR_ENTRIES,
-        repairs: data.map((repair: Repair) => {
+        repairs: repairs.map((repair: Repair) => {
           return {
             id: repair.id,
             name: repair.name,
