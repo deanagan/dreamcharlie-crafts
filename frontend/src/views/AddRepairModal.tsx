@@ -38,7 +38,7 @@ export const AddRepairModal = () => {
         </Modal.Header>
         <Modal.Body>
           <Form onSubmit={handleSubmit}>
-            <Form.Group controlId="formBasicEmail">
+            <Form.Group>
               <Form.Label>Name</Form.Label>
               <Form.Control
                 type="text"
