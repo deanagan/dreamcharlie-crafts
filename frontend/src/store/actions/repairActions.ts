@@ -19,5 +19,9 @@ interface GetRepairEntriesAction {
     repairs: Repair[];
 }
 
+interface DeleteRepairEntryAction {
+    type: RepairActionTypes.DELETE_REPAIR_ENTRY;
+    id: number;
+}
 
-export type RepairAction = AddRepairAction | UpdateRepairAction | GetRepairEntriesAction;
+export type RepairAction = AddRepairAction | UpdateRepairAction | GetRepairEntriesAction | DeleteRepairEntryAction;

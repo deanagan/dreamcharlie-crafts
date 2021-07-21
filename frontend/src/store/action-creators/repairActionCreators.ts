@@ -34,6 +34,20 @@ export const updateRepairState = (id: number, fixed: boolean) => {
   };
 };
 
+export const deleteRepairEntry = (id: number) => {
+  return (dispatch: Dispatch<RepairAction>) => {
+    new HttpClient().delete<Repair | number>({url: `http://localhost:1337/repairs/${id}`, requiresToken: false, payload: id} )
+    .then((data) => {
+      const repair = data as Repair;
+      dispatch({
+        type: RepairActionTypes.DELETE_REPAIR_ENTRY,
+        id: repair.id as number,
+        fixed: repair.fixed,
+      });
+    });
+  };
+};
+
 export const getRepairEntries = () => {
   return (dispatch: Dispatch<RepairAction>) => {
     new HttpClient().get<Repair[]>( {url: 'http://localhost:1337/repairs', requiresToken: false})

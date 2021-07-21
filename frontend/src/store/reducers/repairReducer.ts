@@ -19,15 +19,18 @@ const reducer = (state: RepairState = initialState, action: RepairAction) => {
             return {
                 ...state,
                 repairs: state.repairs.map(e => e.id === action.id ?
-                    { ...e, fixed: action.fixed } : e
-                )
+                    { ...e, fixed: action.fixed } : e)
             }
         case RepairActionTypes.GET_REPAIR_ENTRIES:
             return {
                 ...state,
                 repairs: action.repairs
             }
-        //TODO: update summary, etc
+        case RepairActionTypes.DELETE_REPAIR_ENTRY:
+            return {
+                ...state,
+                repairs: state.repairs.filter(e => e.id !== action.id)
+            }
         default:
             return state;
     }
