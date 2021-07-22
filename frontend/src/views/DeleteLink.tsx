@@ -1,15 +1,23 @@
 import { FC } from "react";
-import { Nav } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { bindActionCreators } from "redux";
 import { actionCreators } from "../store";
-import "./DeleteButton.css";
+import styled from "styled-components";
 
 interface DeleteButtonProp {
   id: number;
 }
 
-export const DeleteButton: FC<DeleteButtonProp> = ({ id }) => {
+const ActionLink = styled.div`
+  color: red;
+  text-decoration: underline;
+  cursor: pointer;
+  width: 50%;
+  margin: auto;
+`
+
+
+export const DeleteLink: FC<DeleteButtonProp> = ({ id }) => {
    const dispatch = useDispatch();
 
    const { deleteRepairEntry } = bindActionCreators(actionCreators, dispatch);
@@ -17,10 +25,9 @@ export const DeleteButton: FC<DeleteButtonProp> = ({ id }) => {
   return (
     <>
       {id !== undefined ? (
-        <Nav.Link
-          className="delete-link"
+        <ActionLink
           onClick={() => deleteRepairEntry(id)}
-        >Delete</Nav.Link>
+        >Delete</ActionLink>
       ) : null}
     </>
   );
