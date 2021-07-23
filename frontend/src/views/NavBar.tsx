@@ -4,7 +4,7 @@ import { Form, FormControl, Button } from "react-bootstrap";
 
 export const NavBar = () => {
   return (
-    <Navbar bg="light" expand="lg">
+    <Navbar bg="light" expand="lg" fixed="top" sticky="top">
       <Navbar.Brand href="#home">Handymen R Us</Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
