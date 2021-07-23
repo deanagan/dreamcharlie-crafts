@@ -14,6 +14,10 @@ const ActionLink = styled.div`
   cursor: pointer;
   width: 50%;
   margin: auto;
+
+  &:hover {
+    text-decoration: none;
+  }
 `
 
 
