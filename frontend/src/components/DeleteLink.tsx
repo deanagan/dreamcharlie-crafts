@@ -1,7 +1,7 @@
 import { FC } from "react";
 import styled from "styled-components";
 
-interface DeleteButtonProp {
+interface DeleteLinkProp {
   deleteFn(): any;
 }
 
@@ -17,7 +17,7 @@ const ActionLink = styled.div`
   }
 `;
 
-export const DeleteLink: FC<DeleteButtonProp> = ({ deleteFn }) => {
+export const DeleteLink: FC<DeleteLinkProp> = ({ deleteFn }) => {
   return (
     <>
       <ActionLink onClick={() => deleteFn()}>Delete</ActionLink>
