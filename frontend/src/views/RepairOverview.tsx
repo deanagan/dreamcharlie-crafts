@@ -6,11 +6,18 @@ import { RepairState } from "../types";
 import { DeleteLink } from "../components/DeleteLink";
 import { FixSwitch } from "./FixSwitch";
 import "./RepairOverview.css";
+import { useState } from "react";
+import { DeleteConfirmationModal } from "../components/DeleteConfirmationModal";
 
 export const RepairOverview: React.FC<RepairState> = ({repairs}) => {
-  const dispatch = useDispatch();
 
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const dispatch = useDispatch();
   const { deleteRepairEntry } = bindActionCreators(actionCreators, dispatch);
+
+  const setModalState =(value: boolean)=> {
+    setShowDeleteModal(value);
+  };
 
   return (
     <Table className="repair-overview-table" striped hover bordered variant="light">
@@ -31,7 +38,18 @@ export const RepairOverview: React.FC<RepairState> = ({repairs}) => {
             <td>{repair.detail}</td>
             <td>{repair.fixed ? "True" : "False"}</td>
             <td><FixSwitch switchId={repair.id as number} fixed={repair.fixed}/></td>
-            <td><DeleteLink deleteFn={() => deleteRepairEntry(repair.id as number)}/></td>
+            <td>
+              <div>
+              <DeleteConfirmationModal
+                title="Confirm Delete"
+                onCancel={() => {setModalState(false)}}
+                onDelete={() => deleteRepairEntry(repair.id as number)}
+                show={showDeleteModal} >
+                  Are you sure you want to delete this item?
+              </DeleteConfirmationModal>
+              <DeleteLink deleteFn={() => setShowDeleteModal(true)}/>
+              </div>
+            </td>
           </tr>
         )}
       </tbody>
