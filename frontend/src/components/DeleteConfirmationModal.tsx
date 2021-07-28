@@ -124,7 +124,7 @@ export const DeleteConfirmationModal: FC<DeleteConfirmationModalProps> = ({
   return ReactDOM.createPortal(
     <CSSTransition in={show} unmountOnExit timeout={{ enter: 0, exit: 300 }}>
       <Modal onClick={onCancel}>
-        <ModalContent onClick={(e) => e.stopPropagation()}>
+        <ModalContent onClick={(e: Event) => e.stopPropagation()}>
           <ModalHeader>
             <ModalTitle>{title}</ModalTitle>
           </ModalHeader>
