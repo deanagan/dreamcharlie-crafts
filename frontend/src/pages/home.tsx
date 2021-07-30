@@ -4,7 +4,7 @@ import {ViewBox} from '../design-system/atoms';
 
 const Wrapper = styled(ViewBox)`
     justify-content: center;
-    background-color: ${({ theme }) => theme.Colors.grey300 };    
+    background-color: ${({ theme }) => theme.Colors.grey300 };
 `;
 
 export const Home = () => {
@@ -12,4 +12,3 @@ export const Home = () => {
         <Wrapper w={600} h={600}>Home</Wrapper>
     );
 };
-

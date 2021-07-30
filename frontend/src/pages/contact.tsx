@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 const Wrapper = styled(ViewBox)`
     justify-content: center;
-    background-color: ${({ theme }) => theme.Colors.red };    
+    background-color: ${({ theme }) => theme.Colors.red };
 `;
 
 export const Contact = () => {
@@ -12,4 +12,3 @@ export const Contact = () => {
         <Wrapper w={600} h={600}>Contact</Wrapper>
     );
 };
-

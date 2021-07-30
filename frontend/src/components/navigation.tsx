@@ -1,10 +1,25 @@
-import {Text, ViewBox} from '../design-system/atoms';
+    import {Text, ViewBox} from '../design-system/atoms';
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const NavLinkWrapper = styled(NavLink)`
-    padding: 10px;
+
+    background-color: ${({ theme }) => theme.Colors.grey500 };
+    overflow: hidden;
+    float: left;
+    color: ${({ theme }) => theme.Colors.white };
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+
+    &:hover {
+        background-color: ${({ theme }) => theme.Colors.white };
+        color: black;
+    }
+
 `;
+
 export const NavBar: React.FC = () => {
     return (
         <ViewBox>
