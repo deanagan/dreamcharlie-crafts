@@ -6,4 +6,5 @@ export const Colors = {
     grey300: '#8F9090',
     grey500: '#6E6E6E',
     red: 'red',
+    activeNav: '#18694E',
 };
