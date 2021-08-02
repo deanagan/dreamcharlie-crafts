@@ -30,7 +30,7 @@ export const NavBar: React.FC = () => {
   return (
     <ViewBox>
       <NavBarWrapper>
-        <NavLinkWrapper to={"/"}>
+        <NavLinkWrapper exact to={"/"}>
           <Text>Home</Text>
         </NavLinkWrapper>
         <NavLinkWrapper to={"/contact"}>
