@@ -24,6 +24,11 @@ export const NavBarWrapper = styled.nav`
   right: 0;
   width: 100%;
   background-color: ${({ theme }) => theme.Colors.grey500};
+
+  & .active {
+    background-color: ${({ theme }) => theme.Colors.activeNav};
+    color: white;
+  }
 `;
 
 export const NavBar: React.FC = () => {
