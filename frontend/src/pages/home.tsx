@@ -6,7 +6,7 @@ import { DeleteConfirmationModal } from "../components/DeleteConfirmationModal";
 import { DeleteLink } from "../components/DeleteLink";
 import { ViewBox } from "../design-system/atoms";
 import { actionCreators, State } from "../store";
-import { FixSwitch } from "../views/FixSwitch";
+import { FixSwitch } from "../components/FixSwitch";
 
 const Wrapper = styled(ViewBox)`
   justify-content: center;
