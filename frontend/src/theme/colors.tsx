@@ -7,4 +7,5 @@ export const Colors = {
     grey500: '#6E6E6E',
     red: 'red',
     activeNav: '#18694E',
+    tableStripe: '#eaf5ba',
 };

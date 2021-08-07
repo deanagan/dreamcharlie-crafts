@@ -3,15 +3,21 @@ import styled from "styled-components";
 import { ViewBox } from "../design-system/atoms/ViewBox";
 
 export const TableWrapper = styled.table`
-  /* position: absolute; */
-  /* left: 0;
-  right: 0; */
-  /* width: 100%; */
-  background-color: ${({ theme }) => theme.Colors.white};
-
-  tr:nth-child(even) {
-    background-color: ${({ theme }) => theme.Colors.grey};
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  border: 1px solid black;
+  th, td {
+    text-align: left;
+    padding: 16px;
   }
+  th {
+    background-color: ${({ theme }) => theme.Colors.grey300};
+  }
+  tr:nth-child(even) {
+    background-color: ${({ theme }) => theme.Colors.tableStripe};
+  }
+
 `;
 
 interface TableProp<T> {
