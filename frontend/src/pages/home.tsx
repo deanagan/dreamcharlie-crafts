@@ -7,10 +7,11 @@ import { DeleteLink } from "../components/DeleteLink";
 import { ViewBox } from "../design-system/atoms";
 import { actionCreators, State } from "../store";
 import { FixSwitch } from "../components/FixSwitch";
+import { Table } from "../components/Table";
 
 const Wrapper = styled(ViewBox)`
   justify-content: center;
-  background-color: ${({ theme }) => theme.Colors.grey300};
+  background-color: ${({ theme }) => theme.Colors.white};
   margin-top: 55px;
 `;
 
@@ -31,47 +32,18 @@ export const Home = () => {
 
   return (
     <Wrapper w={600} h={600}>
-      <table className="repair-overview-table">
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Detail</th>
-            <th>Fixed</th>
-            <th>Update</th>
-            <th>Remove Request</th>
-          </tr>
-        </thead>
-        <tbody>
-          {repairs.map((repair) => (
-            <tr key={repair.id}>
-              <td>{repair.name}</td>
-              <td>{repair.detail}</td>
-              <td>{repair.fixed ? "True" : "False"}</td>
-              <td>
-                <FixSwitch
-                  switchId={repair.id as number}
-                  fixed={repair.fixed}
-                />
-              </td>
-              <td>
-                <div>
-                  <DeleteConfirmationModal
-                    title="Confirm Delete"
-                    onCancel={() => {
-                      setModalState(false);
-                    }}
-                    onDelete={() => deleteRepairEntry(repair.id as number)}
-                    show={showDeleteModal}
-                  >
-                    Are you sure you want to delete this item?
-                  </DeleteConfirmationModal>
-                  <DeleteLink deleteFn={() => setShowDeleteModal(true)} />
-                </div>
-              </td>
-            </tr>
+      <Table
+        rowData={repairs.map((repair) => (
+            {
+                name: repair.name,
+                detail: repair.detail,
+                fixed: repair.fixed ? "True" : "False",
+                switch: "hello",
+                deleter: "world"
+            }
           ))}
-        </tbody>
-      </table>
+        columnLabels={['Name', 'Detail', 'Fixed', 'Update', 'Remove Request']}
+      />
     </Wrapper>
   );
 };
