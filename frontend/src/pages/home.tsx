@@ -6,7 +6,7 @@ import { DeleteConfirmationModal } from "../components/DeleteConfirmationModal";
 import { DeleteLink } from "../components/DeleteLink";
 import { ViewBox } from "../design-system/atoms";
 import { actionCreators, State } from "../store";
-import { FixSwitch } from "../components/FixSwitch";
+import { SwitchCheckbox } from "../components/SwitchCheckbox";
 import { Table } from "../components/Table";
 
 const Wrapper = styled(ViewBox)`
@@ -38,7 +38,7 @@ export const Home = () => {
                 name: repair.name,
                 detail: repair.detail,
                 fixed: repair.fixed ? "True" : "False",
-                switch: (<FixSwitch switchId={repair.id as number} fixed={repair.fixed}/>),
+                switch: (<SwitchCheckbox switchId={repair.id as number} fixed={repair.fixed}/>),
                 deleter: "world",
             }
           ))}
