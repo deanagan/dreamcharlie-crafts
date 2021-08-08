@@ -42,7 +42,7 @@ export const Home = () => {
                 deleter: "world",
             }
           ))}
-        columnLabels={['Name', 'Detail', 'Fixed', 'Update', 'Remove Request']}
+        columnLabels={['Name', 'Detail', 'Completed', 'Update', 'Remove Request']}
       />
     </Wrapper>
   );
