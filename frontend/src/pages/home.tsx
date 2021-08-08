@@ -38,8 +38,8 @@ export const Home = () => {
                 name: repair.name,
                 detail: repair.detail,
                 fixed: repair.fixed ? "True" : "False",
-                switch: "hello",
-                deleter: "world"
+                switch: (<FixSwitch switchId={repair.id as number} fixed={repair.fixed}/>),
+                deleter: "world",
             }
           ))}
         columnLabels={['Name', 'Detail', 'Fixed', 'Update', 'Remove Request']}
