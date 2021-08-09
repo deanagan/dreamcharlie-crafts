@@ -8,6 +8,7 @@ import { ViewBox } from "../design-system/atoms";
 import { actionCreators, State } from "../store";
 import { SwitchCheckbox } from "../components/SwitchCheckbox";
 import { Table } from "../components/Table";
+import { Modal } from "../components/Modal";
 
 const Wrapper = styled(ViewBox)`
   justify-content: center;
@@ -18,6 +19,7 @@ const Wrapper = styled(ViewBox)`
 export const Home = () => {
   const dispatch = useDispatch();
   const { repairs } = useSelector((state: State) => state.repair);
+  const [showAddModal, setShowAddModal] = useState(false);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const { deleteRepairEntry } = bindActionCreators(actionCreators, dispatch);
 
@@ -35,6 +37,7 @@ export const Home = () => {
       <Table
         rowData={repairs.map((repair) => (
             {
+                id: repair.id as number,
                 name: repair.name,
                 detail: repair.detail,
                 fixed: repair.fixed ? "True" : "False",
@@ -43,7 +46,18 @@ export const Home = () => {
             }
           ))}
         columnLabels={['Name', 'Detail', 'Completed', 'Update', 'Remove Request']}
+        rowFields={['name', 'detail', 'fixed', 'switch', 'deleter']}
+        rowIdentifierName={'rowId'}
       />
+
+      <button onClick={() => setShowAddModal(true)}>Add</button>
+      <Modal
+      onCancel={() =>{}}
+      onDelete={() =>{}}
+      show={showAddModal}
+      title="some modal"
+      children={<h1>I will be a form someday</h1>}
+       />
     </Wrapper>
   );
 };
