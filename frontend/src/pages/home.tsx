@@ -52,12 +52,14 @@ export const Home = () => {
 
       <button onClick={() => setShowAddModal(true)}>Add</button>
       <Modal
-      onCancel={() =>{}}
-      onDelete={() =>{}}
+      onCancel={() => setShowAddModal(false)}
+      onOk={() => setShowAddModal(false)}
       show={showAddModal}
-      title="some modal"
+      title="Add New Request"
+      okText="Ok"
+      cancelText="Cancel"
       children={<h1>I will be a form someday</h1>}
        />
     </Wrapper>
   );
-};
+};// Close

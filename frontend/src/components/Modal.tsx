@@ -18,7 +18,7 @@ const StyledModal = styled.div`
   pointer-events: none;
   z-index: 10;
 
-  .enter-done + & {
+  &.enter-done {
     opacity: 1;
     pointer-events: visible;
 
@@ -27,7 +27,7 @@ const StyledModal = styled.div`
     }
   }
 
-  .exit + & {
+  &.exit {
     opacity: 0;
 
     .modal-content {
@@ -50,9 +50,11 @@ const ModalHeader = styled.div`
 const ModalFooter = styled.div`
   padding: 10px;
 `;
+
 const ModalTitle = styled.h4`
   margin: 0;
 `;
+
 const ModalBody = styled.div`
   padding: 10px;
   border-top: 1px solid #eee;
@@ -80,23 +82,27 @@ const CancelButton = styled(ModalButton)`
   color: black;
 `;
 
-const DeleteButton = styled(ModalButton)`
+const OkButton = styled(ModalButton)`
   background: rgb(255, 0, 0);
 `;
 
 interface ModalProps {
   onCancel(): any;
-  onDelete(): any;
+  onOk(): any;
+  okText: string;
+  cancelText: string;
   title: string;
   show: boolean;
 }
 
 export const Modal: FC<ModalProps> = ({
   onCancel,
-  onDelete,
+  onOk,
   show,
   children,
   title,
+  okText,
+  cancelText,
 }) => {
   useEffect(() => {
     const closeWhenEscapeKeyPressed = (key: string) => {
@@ -116,22 +122,22 @@ export const Modal: FC<ModalProps> = ({
     };
   }, [onCancel]);
 
-  const deleteAndClose = () => {
-    onDelete();
+  const OkAndClose = () => {
+    onOk();
     onCancel();
   };
 
   return ReactDOM.createPortal(
     <CSSTransition in={show} unmountOnExit timeout={{ enter: 0, exit: 300 }}>
       <StyledModal onClick={onCancel}>
-        <ModalContent onClick={(e: Event) => e.stopPropagation()}>
+        <ModalContent onClick={(e) => e.stopPropagation()}>
           <ModalHeader>
             <ModalTitle>{title}</ModalTitle>
           </ModalHeader>
           <ModalBody>{children}</ModalBody>
           <ModalFooter>
-            <DeleteButton onClick={deleteAndClose}>Yes</DeleteButton>
-            <CancelButton onClick={onCancel}>Cancel</CancelButton>
+            <OkButton onClick={OkAndClose}>{okText}</OkButton>
+            <CancelButton onClick={onCancel}>{cancelText}</CancelButton>
           </ModalFooter>
         </ModalContent>
       </StyledModal>
