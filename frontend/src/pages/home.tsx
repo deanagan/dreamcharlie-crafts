@@ -6,7 +6,7 @@ import { DeleteConfirmationModal } from "../components/DeleteConfirmationModal";
 import { DeleteLink } from "../components/DeleteLink";
 import { ViewBox } from "../design-system/atoms";
 import { actionCreators, State } from "../store";
-import { SwitchCheckbox } from "../components/SwitchCheckbox";
+import { ToggleSwitch } from "../components/toggleswitch";
 import { Table } from "../components/Table";
 import { Modal } from "../components/Modal";
 
@@ -41,7 +41,7 @@ export const Home = () => {
                 name: repair.name,
                 detail: repair.detail,
                 fixed: repair.fixed ? "True" : "False",
-                switch: (<SwitchCheckbox switchId={repair.id as number} fixed={repair.fixed}/>),
+                switch: (<ToggleSwitch switchId={repair.id as number} fixed={repair.fixed}/>),
                 deleter: "world",
             }
           ))}

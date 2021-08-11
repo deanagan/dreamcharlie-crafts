@@ -4,14 +4,14 @@ import { useDispatch } from "react-redux";
 import { bindActionCreators } from "redux";
 import { actionCreators } from "../store";
 
-const SwitchCheckboxWrapper = styled.div`
+const ToggleSwitchDivWrapper = styled.div`
   position: relative;
   display: inline-block;
   width: 60px;
   height: 34px;
 `;
 
-const SwitchCheckBoxLabel = styled.label`
+const ToggleSwitchLabel = styled.label`
   position: absolute;
   top: 0;
   left: 0;
@@ -33,13 +33,13 @@ const SwitchCheckBoxLabel = styled.label`
   }
 `;
 
-const SwitchStyleCheckbox = styled.input.attrs({ type: 'checkbox' })`
+const ToggleSwitchWrapper = styled.input.attrs({ type: 'checkbox' })`
   opacity: 0;
   z-index: 1;
   border-radius: 15px;
   width: 42px;
   height: 26px;
-  &:checked + ${SwitchCheckBoxLabel} {
+  &:checked + ${ToggleSwitchLabel} {
     background: #4fbe79;
     &::after {
       content: "";
@@ -53,12 +53,12 @@ const SwitchStyleCheckbox = styled.input.attrs({ type: 'checkbox' })`
   }
 `;
 
-interface SwitchCheckboxProp {
+interface ToggleSwitchProp {
   switchId: number;
   fixed: boolean;
 }
 
-export const SwitchCheckbox: FC<SwitchCheckboxProp> = ({ switchId, fixed }) => {
+export const ToggleSwitch: FC<ToggleSwitchProp> = ({ switchId, fixed }) => {
   const dispatch = useDispatch();
 
   const { updateRepairState } = bindActionCreators(actionCreators, dispatch);
@@ -70,13 +70,13 @@ export const SwitchCheckbox: FC<SwitchCheckboxProp> = ({ switchId, fixed }) => {
   };
 
   return (
-    <SwitchCheckboxWrapper>
-      <SwitchStyleCheckbox
+    <ToggleSwitchDivWrapper>
+      <ToggleSwitchWrapper
         id={`switch${switchId}`}
         onChange={(e) => onSwitchChanged(e.target.checked)}
         checked={switchState}
       />
-      <SwitchCheckBoxLabel htmlFor={`switch${switchId}`} />
-    </SwitchCheckboxWrapper>
+      <ToggleSwitchLabel htmlFor={`switch${switchId}`} />
+    </ToggleSwitchDivWrapper>
   );
 };
