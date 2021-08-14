@@ -53,6 +53,7 @@ const ToggleSwitchWrapper = styled.input.attrs({ type: 'checkbox' })`
   }
 `;
 
+
 interface ToggleSwitchProp {
   switchId: number;
   fixed: boolean;
