@@ -31,7 +31,6 @@ export interface TableRowBase {
 
 interface TableProp<T extends TableRowBase> {
   columnLabels: string[];
-  rowIdentifierName: string;
   rowFields: string[];
   rowData: T[];
 }
