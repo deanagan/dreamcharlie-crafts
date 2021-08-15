@@ -4,7 +4,7 @@ import { bindActionCreators } from "redux";
 import styled from "styled-components";
 import { DeleteConfirmationModal } from "../components/DeleteConfirmationModal";
 import { ActionLink } from "../components/ActionLink";
-import { ViewBox } from "../design-system/atoms";
+import { ViewBox, Button } from "../design-system/atoms";
 import { actionCreators, State } from "../store";
 import { ToggleSwitch } from "../components/ToggleSwitch";
 import { Table } from "../components/Table";
@@ -57,7 +57,7 @@ export const Home = () => {
         rowFields={['name', 'detail', 'fixed', 'switch', 'deleter']}
       />
 
-      <button onClick={() => setShowAddModal(true)}>Add</button>
+      <Button onClick={() => setShowAddModal(true)}>Add Request</Button>
       <Modal
         onCancel={() => setShowAddModal(false)}
         onOk={() => setShowAddModal(false)}
