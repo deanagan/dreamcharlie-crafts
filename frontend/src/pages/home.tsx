@@ -2,13 +2,13 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { bindActionCreators } from "redux";
 import styled from "styled-components";
-import { DeleteConfirmationModal } from "../components/DeleteConfirmationModal";
 import { ActionLink } from "../components/ActionLink";
 import { ViewBox, Button } from "../design-system/atoms";
 import { actionCreators, State } from "../store";
 import { ToggleSwitch } from "../components/ToggleSwitch";
 import { Table } from "../components/Table";
 import { Modal } from "../components/Modal";
+import { AddEntryForm } from "../components/AddEntryForm";
 
 const Wrapper = styled(ViewBox)`
   justify-content: center;
@@ -65,7 +65,7 @@ export const Home = () => {
         title="Add New Request"
         okText="Ok"
         cancelText="Cancel"
-        children={<h1>I will be a form someday</h1>}
+        children={<AddEntryForm />}
        />
        <Modal
         onCancel={() => cancelDeletion()}
