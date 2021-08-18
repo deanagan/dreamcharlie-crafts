@@ -2,7 +2,7 @@ import { FC } from "react";
 import styled from "styled-components";
 
 interface ActionLinkProp {
-  deleteFn(): any;
+  deleteFn: () => void;
   message: string;
   color: string;
 }
@@ -21,7 +21,7 @@ const ActionLinkWrapper = styled.div`
 export const ActionLink: FC<ActionLinkProp> = ({ color, deleteFn, message }) => {
   return (
     <>
-      <ActionLinkWrapper color={color} onClick={() => deleteFn()}>{message}</ActionLinkWrapper>
+      <ActionLinkWrapper color={color} onClick={deleteFn}>{message}</ActionLinkWrapper>
     </>
   );
 };
