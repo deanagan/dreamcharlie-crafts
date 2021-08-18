@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 interface ButtonProp {
-    onClick: any;
+    onClick: () => void;
 }
 
 export const ButtonWrapper = styled.button`
