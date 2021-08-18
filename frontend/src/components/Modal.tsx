@@ -4,6 +4,7 @@ import { CSSTransition } from "react-transition-group";
 import styled from "styled-components";
 
 const StyledModal = styled.div`
+  padding-top: 15%;
   position: fixed;
   left: 0;
   top: 0;
@@ -21,18 +22,10 @@ const StyledModal = styled.div`
   &.enter-done {
     opacity: 1;
     pointer-events: visible;
-
-    .modal-content {
-      transform: translateY(0);
-    }
   }
 
   &.exit {
     opacity: 0;
-
-    .modal-content {
-      transform: translateY(-200px);
-    }
   }
 `;
 
@@ -55,6 +48,11 @@ const ModalTitle = styled.h4`
   margin: 0;
 `;
 
+const ModalClose = styled.div`
+  float: right;
+  cursor: pointer;
+`;
+
 const ModalBody = styled.div`
   padding: 10px;
   border-top: 1px solid #eee;
@@ -68,9 +66,9 @@ const ModalButton = styled.button`
   margin: 10px 10px;
   border: none;
   cursor: pointer;
-  width: 97%;
+  width: 100px;
   opacity: 0.9;
-  float: left;
+  float: right;
 
   &:hover {
     opacity: 1;
@@ -83,12 +81,12 @@ const CancelButton = styled(ModalButton)`
 `;
 
 const OkButton = styled(ModalButton)`
-  background: rgb(255, 0, 0);
+  background: rgb(55, 0, 255);
 `;
 
 interface ModalProps {
-  onCancel(): any;
-  onOk(): any;
+  onCancel: () => void;
+  onOk: () => void;
   okText: string;
   cancelText: string;
   title: string;
@@ -132,7 +130,10 @@ export const Modal: FC<ModalProps> = ({
       <StyledModal onClick={onCancel}>
         <ModalContent onClick={(e) => e.stopPropagation()}>
           <ModalHeader>
-            <ModalTitle>{title}</ModalTitle>
+            <ModalTitle>
+              {title}
+              <ModalClose onClick={onCancel}>x</ModalClose>
+            </ModalTitle>
           </ModalHeader>
           <ModalBody>{children}</ModalBody>
           <ModalFooter>
