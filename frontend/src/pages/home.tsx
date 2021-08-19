@@ -22,7 +22,11 @@ export const Home = () => {
   const [showAddModal, setShowAddModal] = useState(false);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [idForDeletion, setIdForDeletion] = useState<number | null>(null);
-  const { deleteRepairEntry } = bindActionCreators(actionCreators, dispatch);
+
+  const [newName, setNewName] = useState("");
+  const [newDetail, setNewDetail] = useState("");
+
+  const { addRepair, deleteRepairEntry } = bindActionCreators(actionCreators, dispatch);
 
 
   const deleteEntry = (id: number) => {
@@ -33,6 +37,13 @@ export const Home = () => {
   const cancelDeletion = () => {
     setIdForDeletion(null);
     setShowDeleteModal(false);
+  }
+
+  const addEntryFormProp = {
+    name: newName,
+    detail: newDetail,
+    changeName: setNewName,
+    changeDetail: setNewDetail,
   }
 
 
@@ -60,12 +71,15 @@ export const Home = () => {
       <Button onClick={() => setShowAddModal(true)}>Add Request</Button>
       <Modal
         onCancel={() => setShowAddModal(false)}
-        onOk={() => setShowAddModal(false)}
+        onOk={() => {
+          setShowAddModal(false);
+          addRepair({name: newName, detail: newDetail, fixed: false});
+        }}
         show={showAddModal}
         title="Add New Request"
         okText="Ok"
         cancelText="Cancel"
-        children={<AddEntryForm />}
+        children={<AddEntryForm {...addEntryFormProp} />}
        />
        <Modal
         onCancel={() => cancelDeletion()}
