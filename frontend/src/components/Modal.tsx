@@ -2,6 +2,7 @@ import { FC, useEffect } from "react";
 import ReactDOM from "react-dom";
 import { CSSTransition } from "react-transition-group";
 import styled from "styled-components";
+import { ButtonWrapper, CloseIcon } from "../design-system/atoms";
 
 const StyledModal = styled.div`
   padding-top: 15%;
@@ -59,34 +60,25 @@ const ModalBody = styled.div`
   border-bottom: 1px solid #eee;
 `;
 
-const ModalButton = styled.button`
-  background-color: #04aa6d;
-  color: white;
-  padding: 14px 20px;
-  margin: 10px 10px;
-  border: none;
-  cursor: pointer;
-  width: 100px;
-  opacity: 0.9;
-  float: right;
-
-  &:hover {
-    opacity: 1;
+const CancelButton = styled(ButtonWrapper)`
+  &&& {
+    background-color: indianred;
+    color: white;
   }
 `;
 
-const CancelButton = styled(ModalButton)`
-  background-color: #ccc;
-  color: black;
-`;
-
-const OkButton = styled(ModalButton)`
-  background: rgb(55, 0, 255);
+const OkButton = styled(ButtonWrapper)`
+  &&& {
+    background: blue;
+    color: white;
+  }
 `;
 
 interface ModalProps {
   onCancel: () => void;
   onOk: () => void;
+  showFooter: boolean;
+  showClose: boolean;
   okText: string;
   cancelText: string;
   title: string;
@@ -101,6 +93,8 @@ export const Modal: FC<ModalProps> = ({
   title,
   okText,
   cancelText,
+  showFooter,
+  showClose,
 }) => {
   useEffect(() => {
     const closeWhenEscapeKeyPressed = (key: string) => {
@@ -125,6 +119,9 @@ export const Modal: FC<ModalProps> = ({
     onCancel();
   };
 
+  const footerStyle = showFooter ? "block" : "none";
+  const closeStyle = showClose ? "block" : "none";
+
   return ReactDOM.createPortal(
     <CSSTransition in={show} unmountOnExit timeout={{ enter: 0, exit: 300 }}>
       <StyledModal onClick={onCancel}>
@@ -132,11 +129,13 @@ export const Modal: FC<ModalProps> = ({
           <ModalHeader>
             <ModalTitle>
               {title}
-              <ModalClose onClick={onCancel}>x</ModalClose>
+              <ModalClose onClick={onCancel}>
+                <CloseIcon style={{ display: closeStyle }} />
+              </ModalClose>
             </ModalTitle>
           </ModalHeader>
           <ModalBody>{children}</ModalBody>
-          <ModalFooter>
+          <ModalFooter style={{ display: footerStyle }}>
             <OkButton onClick={OkAndClose}>{okText}</OkButton>
             <CancelButton onClick={onCancel}>{cancelText}</CancelButton>
           </ModalFooter>
