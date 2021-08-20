@@ -13,10 +13,12 @@ export const ButtonWrapper = styled.button`
   color: white;
   background-color: #04aa6d;
   border: none;
-  border-radius: 15px;
-  box-shadow: 0 5px #999;
+  border-radius: 5px;
+  box-shadow: 0 3px #999;
   float: right;
   margin-top: 2px;
+  margin-left: 5px;
+  margin-bottom: 10px;
 
   &:hover {
     background-color: #032903;
@@ -25,7 +27,7 @@ export const ButtonWrapper = styled.button`
 
   &:active {
     background-color: #3e8e41;
-    box-shadow: 0 5px #666;
+    box-shadow: 0 3px #666;
     transform: translateY(4px);
   }
 `;
