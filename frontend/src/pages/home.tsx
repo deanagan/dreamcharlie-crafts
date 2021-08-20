@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { bindActionCreators } from "redux";
 import styled from "styled-components";
@@ -46,7 +46,6 @@ export const Home = () => {
     changeDetail: setNewDetail,
   }
 
-
   useEffect(() => {
     dispatch(actionCreators.getRepairEntries());
   }, [dispatch]);
@@ -70,7 +69,11 @@ export const Home = () => {
 
       <Button onClick={() => setShowAddModal(true)}>Add Request</Button>
       <Modal
-        onCancel={() => setShowAddModal(false)}
+        onCancel={() => {
+          setShowAddModal(false);
+          setNewDetail("");
+          setNewName("");
+        }}
         onOk={() => {
           setShowAddModal(false);
           addRepair({name: newName, detail: newDetail, fixed: false});
@@ -80,6 +83,8 @@ export const Home = () => {
         okText="Ok"
         cancelText="Cancel"
         children={<AddEntryForm {...addEntryFormProp} />}
+        showFooter={!!(newName && newDetail)}
+        showClose
        />
        <Modal
         onCancel={() => cancelDeletion()}
@@ -89,6 +94,8 @@ export const Home = () => {
         okText="Ok"
         cancelText="Cancel"
         children={<h4>Are you sure you want to delete this request?</h4>}
+        showFooter
+        showClose={false}
        />
     </Wrapper>
   );
