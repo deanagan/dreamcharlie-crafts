@@ -1,8 +1,7 @@
 version: '3.7'
 
 services:
-
-  sample:
+  repair-me:
     container_name: repair-me
     build:
       context: .
